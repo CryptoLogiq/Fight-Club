@@ -10,7 +10,7 @@ function Game.load()
 end
 
 function Game.draw()
-  Game.images[1].draw()
+  Game.images[1].draw(100, 200)
 end
 
 return Game

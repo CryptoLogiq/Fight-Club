@@ -8,8 +8,8 @@ function ImgManager.new(pfile)
     img.w = 0
     img.data = love.graphics.newImage(pfile)
     img.w, img.h = img.data:getDimensions()
-    function img.draw()
-        love.graphics.draw(img.data, img.x, img.y)
+    function img.draw(x, y)
+        love.graphics.draw(img.data, x or img.x, y or img.y)
     end
     return img
 end
