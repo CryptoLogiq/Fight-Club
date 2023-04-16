@@ -3,6 +3,7 @@ local Game = {}
 Game.images = {}
 
 local player = require("Game/player")
+local background
 
 function Game.load()
   local files = love.filesystem.getDirectoryItems("Game/Ressources")
@@ -10,6 +11,7 @@ function Game.load()
     table.insert( Game.images, Core.image.new("Game/Ressources/"..file) )
   end
   player.load()
+  background = Game.images[3]
 end
 
 function Game.update(dt)
@@ -17,6 +19,7 @@ function Game.update(dt)
 end
 
 function Game.draw()
+  background.draw()
   player.draw(player.x, player.y)
 end
 

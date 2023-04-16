@@ -5,9 +5,10 @@ player.speed = 100
 player.animation = nil
 player.timer = Core.timer.new(200)
 player.sequence = {}
-player.sequence.idle = {4}
-player.sequence.walk = {4, 5}
+player.sequence.idle  = {4}
+player.sequence.walk  = {4, 5}
 player.sequence.punch = {6}
+player.sequence.kick  = {7}
 player.sequence.current = "idle"
 player.sequence.currentFrame = 1
 
@@ -22,6 +23,8 @@ function player.changeAnimation(pAnim)
     player.timer = Core.timer.new(0)
   elseif pAnim == "punch" then
     player.timer = Core.timer.new(120)
+  elseif pAnim == "kick" then
+    player.timer = Core.timer.new(120)
   end
 
 end
@@ -30,8 +33,7 @@ function player.move(dt)
   if player.sequence.current == "idle" or player.sequence.current == "walk" then
     if love.keyboard.isDown("d") or love.keyboard.isDown("q") then
       if player.sequence.current == "idle" then
-        player.sequence.current = "walk"
-        player.sequence.currentFrame = 1
+        player.changeAnimation("walk")
       end
       if love.keyboard.isDown("d") then
         player.x = player.x + player.speed*dt
@@ -41,8 +43,7 @@ function player.move(dt)
       end
     else
       if player.sequence.current ~= "idle" then
-        player.sequence.current = "idle"
-        player.sequence.currentFrame = 1
+        player.changeAnimation("idle")
       end
     end
   end
@@ -83,6 +84,9 @@ end
 function player.keypressed(k)
   if k == "right" then
     player.changeAnimation("punch")
+  end
+  if k == "up" then
+    player.changeAnimation("kick")
   end
 end
 

@@ -2,27 +2,44 @@
 Core = require("Core/core")
 Game = require("Game/game")
 Intro = require("Intro/intro")
+menu = require("menu/menu")
 
-
+scene = "menu"
 --###### Love2D ######
 
 function love.load()
-  Game.load()
+  if scene == "game" then
+    Game.load()
+  else
+    menu.load()
+  end
 end
 --
 
 function love.update(dt)
-  Game.update(dt)
+  if scene == "game" then
+    Game.update(dt)
+  else
+    --menu.update(dt)
+  end
 end
 --
 
 function love.draw()
-  Game.draw()
+  if scene == "game" then
+    Game.draw()
+  else
+    menu.draw()
+  end
 end
 --
 
 function love.keypressed(k,scan)
-  Game.keypressed(k)
+  if scene == "game" then
+    Game.keypressed(k)
+  else
+    menu.keypressed(k)
+  end
 end
 --
 
