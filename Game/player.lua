@@ -14,6 +14,7 @@ player.sequence.currentFrame = 1
 function player.changeAnimation(pAnim)
   player.sequence.current = pAnim
   player.sequence.currentFrame = 1
+  player.animation = Game.images[ player.sequence[player.sequence.current][player.sequence.currentFrame] ]
 end
 
 function player.move(dt)
@@ -59,7 +60,7 @@ end
 --
 
 function player.update(dt)
-  player.move(dt)
+  --player.move(dt)
   player.updateFrame(dt)
 end
 --
@@ -68,7 +69,7 @@ function player.draw()
   player.animation.draw(player.x, player.y)
 end
 --
-function player.keypressed(k) 
+function player.keypressed(k)
   if k == "right" then
     player.changeAnimation("punch")
   end
