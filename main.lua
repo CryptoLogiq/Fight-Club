@@ -16,6 +16,7 @@ end
 --
 
 function love.draw()
+  Game.draw()
 end
 --
 
