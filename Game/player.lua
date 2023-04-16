@@ -5,19 +5,30 @@ player.speed = 100
 player.animation = nil
 player.timer = Core.timer.new()
 player.sequence = {}
-player.sequence.idle = {4, 5}
+player.sequence.idle = {4}
+player.sequence.walk = {4, 5}
 player.sequence.current = "idle"
 player.sequence.currentFrame = 1
 
 function player.move(dt)
-  if love.keyboard.isDown("d") then
-    player.x = player.x + player.speed*dt
-  end
-  if love.keyboard.isDown("q") then
-    player.x = player.x - player.speed*dt
+  if love.keyboard.isDown("d") or love.keyboard.isDown("q") then
+    if player.sequence.current == "idle" then
+      player.sequence.current = "walk"
+      player.sequence.currentFrame = 1
+    end
+    if love.keyboard.isDown("d") then
+      player.x = player.x + player.speed*dt
+    end
+    if love.keyboard.isDown("q") then
+      player.x = player.x - player.speed*dt
+    end
+  else
+    if player.sequence.current ~= "idle" then
+      player.sequence.current = "idle"
+      player.sequence.currentFrame = 1
+    end
   end
 end
---
 
 function player.updateFrame(dt)
   if player.timer.update(dt) then
