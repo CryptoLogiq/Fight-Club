@@ -14,17 +14,17 @@ function Game.load()
 end
 
 function Game.update(dt)
-   if love.keyboard.keypressed("d") then
+   if love.keyboard.isDown("d") then
     player.x = player.x + 100*dt
   end
-  if love.keyboard.keypressed("q") then
+  if love.keyboard.isDown("q") then
     player.x = player.x - 100*dt
   end
-  if love.keyboard.keypressed("z") then
-    player.x = player.x - 100*dt
+  if love.keyboard.isDown("z") then
+    player.y = player.y - 100*dt
   end
-  if love.keyboard.keypressed("s") then
-    player.x = player.x + 100*dt
+  if love.keyboard.isDown("s") then
+    player.y = player.y + 100*dt
   end
 end
 

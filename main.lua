@@ -12,6 +12,7 @@ end
 --
 
 function love.update(dt)
+  Game.update(dt)
 end
 --
 
