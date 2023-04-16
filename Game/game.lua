@@ -20,4 +20,7 @@ function Game.draw()
   player.draw(player.x, player.y)
 end
 
+function Game.keypressed(k)
+  player.keypressed(k)
+end
 return Game

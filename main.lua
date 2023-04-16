@@ -22,6 +22,7 @@ end
 --
 
 function love.keypressed(k,scan)
+  Game.keypressed(k)
 end
 --
 
