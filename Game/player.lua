@@ -15,7 +15,7 @@ function player.changeAnimation(pAnim)
   player.sequence.current = pAnim
   player.sequence.currentFrame = 1
   player.animation = Game.images[ player.sequence[player.sequence.current][player.sequence.currentFrame] ]
-  
+
   if pAnim == "walk" then
     player.timer = Core.timer.new(200)
   elseif pAnim == "idle" then
@@ -23,25 +23,27 @@ function player.changeAnimation(pAnim)
   elseif pAnim == "punch" then
     player.timer = Core.timer.new(120)
   end
-  
+
 end
 
 function player.move(dt)
-  if love.keyboard.isDown("d") or love.keyboard.isDown("q") then
-    if player.sequence.current == "idle" then
-      player.sequence.current = "walk"
-      player.sequence.currentFrame = 1
-    end
-    if love.keyboard.isDown("d") then
-      player.x = player.x + player.speed*dt
-    end
-    if love.keyboard.isDown("q") then
-      player.x = player.x - player.speed*dt
-    end
-  else
-    if player.sequence.current ~= "idle" then
-      player.sequence.current = "idle"
-      player.sequence.currentFrame = 1
+  if player.sequence.current == "idle" or player.sequence.current == "walk" then
+    if love.keyboard.isDown("d") or love.keyboard.isDown("q") then
+      if player.sequence.current == "idle" then
+        player.sequence.current = "walk"
+        player.sequence.currentFrame = 1
+      end
+      if love.keyboard.isDown("d") then
+        player.x = player.x + player.speed*dt
+      end
+      if love.keyboard.isDown("q") then
+        player.x = player.x - player.speed*dt
+      end
+    else
+      if player.sequence.current ~= "idle" then
+        player.sequence.current = "idle"
+        player.sequence.currentFrame = 1
+      end
     end
   end
 end
@@ -69,7 +71,7 @@ end
 --
 
 function player.update(dt)
-  --player.move(dt)
+  player.move(dt)
   player.updateFrame(dt)
 end
 --
