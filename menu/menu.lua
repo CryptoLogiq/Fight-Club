@@ -16,6 +16,9 @@ function menu.draw()
 end
 
 function menu.keypressed(k)
-end
+    if k == "space" then
+        scene = "game"
+    end
+end 
 
 return menu
