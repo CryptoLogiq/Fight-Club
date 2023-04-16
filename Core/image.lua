@@ -7,7 +7,7 @@ function ImgManager.new(pfile)
     img.h = 0
     img.w = 0
     img.data = love.graphics.newImages(pfile)
-    img.data:getdimensions()
+    img.w, img.h = img.data:getdimensions()
 end
 
 return ImgManager
