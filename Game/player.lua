@@ -82,11 +82,13 @@ function player.draw()
 end
 --
 function player.keypressed(k)
-  if k == "right" then
-    player.changeAnimation("punch")
-  end
-  if k == "up" then
-    player.changeAnimation("kick")
+  if player.sequence.current == "idle" or player.sequence.current == "walk" then
+    if k == "right" then
+      player.changeAnimation("punch")
+    end
+    if k == "up" then
+      player.changeAnimation("kick")
+    end
   end
 end
 

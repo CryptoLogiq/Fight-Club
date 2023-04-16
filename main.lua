@@ -8,11 +8,8 @@ scene = "menu"
 --###### Love2D ######
 
 function love.load()
-  if scene == "game" then
-    Game.load()
-  else
-    menu.load()
-  end
+  Game.load()
+  menu.load()
 end
 --
 
