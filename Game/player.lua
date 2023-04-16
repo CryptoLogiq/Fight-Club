@@ -15,6 +15,15 @@ function player.changeAnimation(pAnim)
   player.sequence.current = pAnim
   player.sequence.currentFrame = 1
   player.animation = Game.images[ player.sequence[player.sequence.current][player.sequence.currentFrame] ]
+  
+  if pAnim == "walk" then
+    player.timer = Core.timer.new(200)
+  elseif pAnim == "idle" then
+    player.timer = Core.timer.new(0)
+  elseif pAnim == "punch" then
+    player.timer = Core.timer.new(120)
+  end
+  
 end
 
 function player.move(dt)
