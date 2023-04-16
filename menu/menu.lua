@@ -79,6 +79,7 @@ function menu.update(dt)
   local multY = 2.6
   local sx = math.abs( math.cos(arround) ) * multX
   local sy = math.abs( math.sin(arround) ) * multY
+  -- Math.max(lowerBound, Math.min(value, upperBound))
   title.sx = math.max(0.5, math.min(multX, sx))
   title.sy = math.max(1, math.min(multY, sy))
 
