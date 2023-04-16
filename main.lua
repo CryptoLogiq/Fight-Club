@@ -1,12 +1,13 @@
 --###### Requires ######
 Core = require("Core/core")
-Game = require("gore/game")
+Game = require("Game/game")
 Intro = require("Intro/intro")
 
 
 --###### Love2D ######
 
 function love.load()
+  Game.load()
 end
 --
 
