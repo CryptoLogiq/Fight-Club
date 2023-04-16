@@ -17,7 +17,7 @@ function love.update(dt)
   if scene == "game" then
     Game.update(dt)
   else
-    --menu.update(dt)
+    menu.update(dt)
   end
 end
 --
